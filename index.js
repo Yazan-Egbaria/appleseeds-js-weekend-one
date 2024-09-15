@@ -274,3 +274,101 @@ function longestWords(str) {
   return longestWord;
 }
 console.log(longestWords("Hello everyone my name is Yazan Egbaria"));
+
+// Ex6.1 mumbling
+function mumbling(str) {
+  let result = "";
+  for (let i = 0; i < str.length; i++) {
+    for (let j = 0; j <= i; j++) {
+      if (j === 0) {
+        result += str[i].toUpperCase();
+      }
+      result += str[i];
+    }
+    result += "-";
+  }
+  result = result.slice(0, result.length - 1);
+  return result;
+}
+console.log(mumbling("abcd"));
+
+//Ex6.2 Couting duplicates
+function countDuplicates(str) {
+  const strArr = str.toLowerCase().split("").sort();
+  let duplicateCount = 0;
+  for (let i = 1; i < strArr.length; i++) {
+    if (strArr[i] === strArr[i - 1]) {
+      duplicateCount++;
+    }
+  }
+  if (duplicateCount === 0) {
+    console.log("No characters repeats more than once");
+    return false;
+  }
+  return duplicateCount;
+}
+
+console.log(countDuplicates("aabbcd11"));
+
+//Ex6.3 organize strings
+function organizeStrings(str1, str2) {
+  let result = "";
+  const s1 = str1.toLowerCase().split("");
+  const s2 = str2.toLowerCase().split("");
+  let combined = [...s1, ...s2].sort();
+  for (let i = 0; i < combined.length; i++) {
+    if (combined[i] !== combined[i - 1]) {
+      result += combined[i];
+    }
+  }
+  return result;
+}
+console.log(organizeStrings("Yazan", "Egbaria"));
+
+//Ex6.4 isogram
+function isogramWord(str) {
+  const string = str.toLowerCase().split("");
+  string.sort();
+  let isIsogram = true;
+  for (i = 0; i < string.length; i++) {
+    if (string[i] === string[i - 1]) {
+      isIsogram = false;
+    }
+  }
+  return isIsogram;
+}
+console.log(isogramWord("Dermatoglyphics"));
+
+//Ex7 implement the following js methods
+//ForEach
+const numbers = [2, 4, 6, 8, 10];
+numbers.forEach((n) => {
+  console.log(n * n);
+});
+
+//Map
+const numbersTwo = [2, 4, 6, 8, 10];
+const numbersThree = numbersTwo.map((n) => {
+  return n * n;
+});
+console.log(numbersTwo);
+console.log(numbersThree);
+
+//Filter
+const numbersFour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const evenNumbers = numbersFour.filter((number) => {
+  return number % 2 === 0;
+});
+
+console.log(numbersFour);
+console.log(evenNumbers);
+
+//Ex8
+function findPerimeter(arr) {
+  let perimeter = 0;
+  arr.forEach((n) => {
+    perimeter += n * 2;
+  });
+  return perimeter;
+}
+console.log(findPerimeter([20, 10]));
